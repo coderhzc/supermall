@@ -1,5 +1,5 @@
 <template>
-  <div class="tab-bal-item" @click="itemClick">
+  <div class="tab-bar-item" @click="itemClick">
     <div v-if="!isActive"><slot name="item-icon"></slot></div>
     <div v-else><slot name="item-icon-active"></slot></div>
     <div :style="stylecolor"><slot name="item-text"></slot></div>
@@ -41,12 +41,12 @@ export default {
 </script>
 
 <style scoped>
-.tab-bal-item{
+.tab-bar-item{
   flex:1;
   height: 49px;
   text-align: center;
 }
-.tab-bal-item img{
+.tab-bar-item img{
   height: 24px;
   width: 24px;
   vertical-align: middle;
