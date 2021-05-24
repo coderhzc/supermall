@@ -10,7 +10,7 @@
 
 <script>
 import NavBar from "@/components/common/NavBar Common/NavBar";
-import NarBarItem from "@/components/common/NavBar Common/NarBarItem";
+import NarBarItem from "@/components/common/NavBar Common/NavBarItem";
 export default {
   name: "NavBarHome",
   components:{

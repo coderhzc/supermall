@@ -20,7 +20,7 @@ export default {
   right: 0;
 
   background-color: rgba(227, 226, 226, 0.57);
-  box-shadow: 0px -4px 4px rgba(130, 128, 128,0.3);
+  box-shadow: 0px -3px 4px rgba(130, 128, 128,0.2);
 }
 
 </style>
