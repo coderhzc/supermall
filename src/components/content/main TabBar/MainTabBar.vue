@@ -1,4 +1,4 @@
-<template>
+<template>        <!--底部导航栏-->
   <div>
     <router-view/>
     <tab-bar>
@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import TabBar from "@/components/common/TabVar Common/TabBar";
-import TabBarItem from "@/components/common/TabVar Common/TabBarItem";
+import TabBar from "@/components/common/TabBar Common/TabBar";
+import TabBarItem from "@/components/common/TabBar Common/TabBarItem";
 export default {
   name: "MainTabBar",
   components:{

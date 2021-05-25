@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>git
+<script>
 import MainTabBar from "@/components/content/main TabBar/MainTabBar";
 export default {
   name: 'app',

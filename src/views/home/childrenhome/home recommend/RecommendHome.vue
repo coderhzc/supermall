@@ -27,14 +27,14 @@ export default {
 .recommend{
   text-align: center;
   display: flex;
-  box-shadow: 0px 1px 1px rgb(219, 114, 114,.2);
 }
 .recommenditem{
-  margin: 10px;
+  margin: 13px;
   flex:1;
 }
 .recommenditem img{
   width: 60px;
   height: 60px;
+
 }
 </style>

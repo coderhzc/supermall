@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue'       //底部导航栏的路由
 import Router from 'vue-router'
 Vue.use(Router)
 
