@@ -37,6 +37,7 @@ export default {
 .home-bar{
   display: flex;
   text-align: center;
+  background: #ffffff;
 }
 .home-bar-item{
   flex: 1;

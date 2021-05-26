@@ -1,11 +1,12 @@
 <template>
   <div>
 <!--顶部导航栏/滚动横幅/推荐栏/周末推荐/主页类别选择-->
-    <nav-bar-home/>
+    <nav-bar-home class="navbar"/>
     <swiper-home :banners="banners"/>
     <recommend-home :recommends="recommends"/>
     <week-recommend></week-recommend>
-    <home-bar :title="title=['热门','新款','精选']" @topClick="topClick"/>
+    <home-bar class="hombar" :title="title=['流行','新款','精选']" @topClick="topClick"/>
+    <home-goods :home-goods="showGoods"/>
 
     <ul>
       <li>1商品</li>
@@ -118,6 +119,7 @@ import NavBarHome from "@/views/home/childrenhome/home navbar/NavBarHome";
 import RecommendHome from "@/views/home/childrenhome/home recommend/RecommendHome";
 import WeekRecommend from "@/views/home/childrenhome/home recommend/WeekRecommend";
 import HomeBar from "@/components/content/Home Bar/HomeBar";
+import HomeGoods from "@/components/content/Home Goods /HomeGoods";
 
 //三方导入
 import SwiperHome from "@/views/home/childrenhome/home swiper/SwiperHome";
@@ -132,6 +134,7 @@ export default {
     RecommendHome,
     WeekRecommend,
     HomeBar,
+    HomeGoods,
 
     SwiperHome,
   },
@@ -153,20 +156,25 @@ export default {
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
   },
+  computed:{
+    showGoods(){
+     return this.goods[this.currentType].list
+    }
+  },
   methods:{
-    topClick(index){        //通过switch选择type
+    topClick(index){
       switch (index){
-        case 0 :{
-          this.currentType = 'pop';
-          break;
-          }
-        case 1 :{
-          this.currentType = 'new';
-          break;
+        case 0:{
+          this.currentType='pop'
+          break
         }
-        case 2 :{
-          this.currentType = 'sell';
-          break;
+        case 1:{
+          this.currentType='new'
+          break
+        }
+        case 2:{
+          this.currentType='sell'
+          break
         }
       }
     },
@@ -179,7 +187,8 @@ export default {
     getHomeGoods(type){       //获取主页类别的数据
       const page = this.goods[type].page+1;
       getHomeGoods(type,page).then(res => {
-        console.log(type);
+        this.goods[type].list.push(...res.data.data.list)
+        this.goods[type].page += 1
         console.log(res);
       })
     }
@@ -188,5 +197,14 @@ export default {
 </script>
 
 <style scoped>
-
+.navbar{
+  top: 0;
+  position: sticky;
+  z-index: 9;
+}
+.hombar{
+  top: 44px;
+  position: sticky;
+  z-index: 9;
+}
 </style>

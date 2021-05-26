@@ -2,7 +2,7 @@
 <div>
   <nav-bar>
     <nar-bar-item>
-      <div slot="center">购物街</div>
+      <div slot="center" class="nav-bar">购物街</div>
     </nar-bar-item>
   </nav-bar>
 </div>
@@ -21,5 +21,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
