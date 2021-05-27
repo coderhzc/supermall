@@ -11,16 +11,7 @@ export default {
 </script>
 
 <style scoped>
-.backtop{
-  position: fixed;
-  right: 10px;
-  bottom: 60px;
 
-  background: #ffffff;
-  border-radius: 20px;
-  width: 45px;
-  height: 40px;
-}
 .backtop img{
   width: 50px;
   height: 70px;

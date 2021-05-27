@@ -10,7 +10,7 @@
     <home-bar class="hombar" :title="title=['流行','新款','精选']" @topClick="topClick"/>
     <home-goods :home-goods="showGoods" />
     </scroll>
-    <back-top @click.native="getBackTop"/>
+    <back-top class="backtop" @click.native="getBackTop"/>
   </div>
 </template>
 
@@ -118,7 +118,7 @@ export default {
   position: sticky;
   z-index: 9;
 }
-  .content {
+.content {
     overflow: hidden;
 
     position: absolute;
@@ -126,5 +126,15 @@ export default {
     bottom: 49px;
     left: 0;
     right: 0;
-  }
+}
+.backtop{
+  position: fixed;
+  right: 10px;
+  bottom: 60px;
+
+  background: #ffffff;
+  border-radius: 20px;
+  width: 45px;
+  height: 40px;
+}
 </style>
