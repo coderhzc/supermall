@@ -19,7 +19,7 @@ export default {
         return[]
       }
     }
-  }
+  },
 }
 </script>
 
@@ -65,10 +65,10 @@ export default {
   content: '';
   position: absolute;
   left: -17px;
-  top: 2px;
-  width: 14px;
-  height: 14px;
+  top: 0px;
+  width: 17px;
+  height: 17px;
 
-  background:url("~assets/img/goodslist/addshopcar.svg") 0 0/14px 14px;
+  background:url("~assets/img/goodslist/addshopcar.svg") 0 0/17px 17px;
 }
 </style>

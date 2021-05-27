@@ -1,125 +1,29 @@
 <template>
   <div>
-<!--顶部导航栏/滚动横幅/推荐栏/周末推荐/主页类别选择-->
+<!--顶部导航栏/滚动横幅/推荐栏/周末推荐/主页类别选择/商品展示/返回顶部-->
     <nav-bar-home class="navbar"/>
+
+    <scroll class="content" ref="scroll">
     <swiper-home :banners="banners"/>
     <recommend-home :recommends="recommends"/>
-    <week-recommend></week-recommend>
+    <week-recommend/>
     <home-bar class="hombar" :title="title=['流行','新款','精选']" @topClick="topClick"/>
-    <home-goods :home-goods="showGoods"/>
-
-    <ul>
-      <li>1商品</li>
-      <li>2商品</li>
-      <li>3商品</li>
-      <li>4商品</li>
-      <li>5商品</li>
-      <li>6商品</li>
-      <li>7商品</li>
-      <li>8商品</li>
-      <li>9商品</li>
-      <li>10商品</li>
-      <li>11商品</li>
-      <li>12商品</li>
-      <li>13商品</li>
-      <li>14商品</li>
-      <li>15商品</li>
-      <li>16商品</li>
-      <li>17商品</li>
-      <li>18商品</li>
-      <li>19商品</li>
-      <li>20商品</li>
-      <li>21商品</li>
-      <li>22商品</li>
-      <li>23商品</li>
-      <li>24商品</li>
-      <li>25商品</li>
-      <li>26商品</li>
-      <li>27商品</li>
-      <li>28商品</li>
-      <li>29商品</li>
-      <li>30商品</li>
-      <li>31商品</li>
-      <li>32商品</li>
-      <li>33商品</li>
-      <li>34商品</li>
-      <li>35商品</li>
-      <li>36商品</li>
-      <li>37商品</li>
-      <li>38商品</li>
-      <li>39商品</li>
-      <li>40商品</li>
-      <li>41商品</li>
-      <li>42商品</li>
-      <li>43商品</li>
-      <li>44商品</li>
-      <li>45商品</li>
-      <li>46商品</li>
-      <li>47商品</li>
-      <li>48商品</li>
-      <li>49商品</li>
-      <li>50商品</li>
-      <li>51商品</li>
-      <li>52商品</li>
-      <li>53商品</li>
-      <li>54商品</li>
-      <li>55商品</li>
-      <li>56商品</li>
-      <li>57商品</li>
-      <li>58商品</li>
-      <li>59商品</li>
-      <li>60商品</li>
-      <li>61商品</li>
-      <li>62商品</li>
-      <li>63商品</li>
-      <li>64商品</li>
-      <li>65商品</li>
-      <li>66商品</li>
-      <li>67商品</li>
-      <li>68商品</li>
-      <li>69商品</li>
-      <li>70商品</li>
-      <li>71商品</li>
-      <li>72商品</li>
-      <li>73商品</li>
-      <li>74商品</li>
-      <li>75商品</li>
-      <li>76商品</li>
-      <li>77商品</li>
-      <li>78商品</li>
-      <li>79商品</li>
-      <li>80商品</li>
-      <li>81商品</li>
-      <li>82商品</li>
-      <li>83商品</li>
-      <li>84商品</li>
-      <li>85商品</li>
-      <li>86商品</li>
-      <li>87商品</li>
-      <li>88商品</li>
-      <li>89商品</li>
-      <li>90商品</li>
-      <li>91商品</li>
-      <li>92商品</li>
-      <li>93商品</li>
-      <li>94商品</li>
-      <li>95商品</li>
-      <li>96商品</li>
-      <li>97商品</li>
-      <li>98商品</li>
-      <li>99商品</li>
-      <li>100商品</li>
-    </ul>
+    <home-goods :home-goods="showGoods" />
+    </scroll>
+    <back-top @click.native="getBackTop"/>
   </div>
 </template>
 
 <script>
-//业务组件
+//公共业务组件
 import NavBarHome from "@/views/home/childrenhome/home navbar/NavBarHome";
+import HomeBar from "@/components/content/Home Bar/HomeBar";
+import Scroll from "@/components/common/main Scorll/Scroll";
+//业务组件
 import RecommendHome from "@/views/home/childrenhome/home recommend/RecommendHome";
 import WeekRecommend from "@/views/home/childrenhome/home recommend/WeekRecommend";
-import HomeBar from "@/components/content/Home Bar/HomeBar";
-import HomeGoods from "@/components/content/Home Goods /HomeGoods";
+import HomeGoods from "@/views/home/childrenhome/Home Goods /HomeGoods";
+import BackTop from "@/components/content/Back Top/BackTop";
 
 //三方导入
 import SwiperHome from "@/views/home/childrenhome/home swiper/SwiperHome";
@@ -130,11 +34,14 @@ import {getHomeMultidata,getHomeGoods} from "@/network/home";
 export default {
   name: "Home",
   components:{
+    HomeBar,
     NavBarHome,
+    Scroll,
+
     RecommendHome,
     WeekRecommend,
-    HomeBar,
     HomeGoods,
+    BackTop,
 
     SwiperHome,
   },
@@ -152,17 +59,21 @@ export default {
   },
   created() {
     this.getHomeMultidata()
+
     this.getHomeGoods('pop')
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
   },
   computed:{
-    showGoods(){
+    showGoods(){        //通过currentType来选择展示商品
      return this.goods[this.currentType].list
     }
   },
   methods:{
-    topClick(index){
+    getBackTop(){       //通过scrollTo 返回顶部
+      this.$refs.scroll.scrollTo(0,0);
+    },
+    topClick(index){        //获取选择对象
       switch (index){
         case 0:{
           this.currentType='pop'
@@ -191,7 +102,7 @@ export default {
         this.goods[type].page += 1
         console.log(res);
       })
-    }
+    },
   }
 }
 </script>
@@ -207,4 +118,13 @@ export default {
   position: sticky;
   z-index: 9;
 }
+  .content {
+    overflow: hidden;
+
+    position: absolute;
+    top: 44px;
+    bottom: 49px;
+    left: 0;
+    right: 0;
+  }
 </style>

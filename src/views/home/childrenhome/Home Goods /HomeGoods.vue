@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import HomeGoodsList from "@/components/content/Home Goods /HomeGoodsList";
+import HomeGoodsList from "@/views/home/childrenhome/Home Goods /HomeGoodsList";
 export default {
   name: "HomeGoods",
   components:{
