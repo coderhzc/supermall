@@ -22,7 +22,12 @@ export default {
         return[]
       }
     }
-  }
+  },
+  data(){
+    return{
+      isLoad:false,
+    }
+  },
 }
 </script>
 

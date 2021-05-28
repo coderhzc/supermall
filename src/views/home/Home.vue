@@ -3,14 +3,24 @@
 <!--顶部导航栏/滚动横幅/推荐栏/周末推荐/主页类别选择/商品展示/返回顶部-->
     <nav-bar-home class="navbar"/>
 
-    <scroll class="content" ref="scroll">
+    <home-bar class="hombar" :title="title=['流行','新款','精选']"
+              @topClick="topClick" v-show="disappearHomeBar" ref="topControlRef2"/>
+
+    <scroll class="content"
+            ref="scroll"
+            @scroll="contentBackTop"
+            :is-back-top="3"
+            @pullingUp="loadMore"
+            :ispull-up-load="true">
     <swiper-home :banners="banners"/>
     <recommend-home :recommends="recommends"/>
     <week-recommend/>
-    <home-bar class="hombar" :title="title=['流行','新款','精选']" @topClick="topClick"/>
+    <home-bar class="hombar" :title="title=['流行','新款','精选']"
+              @topClick="topClick"
+              ref="topControlRef1"/>
     <home-goods :home-goods="showGoods" />
     </scroll>
-    <back-top class="backtop" @click.native="getBackTop"/>
+    <back-top class="backtop" @click.native="getBackTop" v-show="isBackTop"/>
   </div>
 </template>
 
@@ -54,7 +64,10 @@ export default {
         'new':{page:0,list:[]},
         'sell':{page:0,list:[]},
       },
-      currentType:'pop'
+      currentType:'pop',
+      isBackTop:false,
+      disappearHomeBar:false,
+      saveY:0,
     }
   },
   created() {
@@ -63,6 +76,13 @@ export default {
     this.getHomeGoods('pop')
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
+  },
+  activated() {
+    this.$refs.scroll.scrollTo(0,this.saveY,0)
+  },
+  deactivated() {
+    this.saveY = this.$refs.scroll.getScrollY()
+    console.log(this.saveY);
   },
   computed:{
     showGoods(){        //通过currentType来选择展示商品
@@ -73,6 +93,14 @@ export default {
     getBackTop(){       //通过scrollTo 返回顶部
       this.$refs.scroll.scrollTo(0,0);
     },
+    contentBackTop(position){       //通过位置决定是否显示返回顶部
+      this.isBackTop = (-position.y)> 1000
+      this.disappearHomeBar = (-position.y) > this.$refs.topControlRef1.$el.offsetTop
+    },
+    loadMore(){          //获取更多商品展示
+      this.getHomeGoods(this.currentType)
+    },
+
     topClick(index){        //获取选择对象
       switch (index){
         case 0:{
@@ -88,6 +116,8 @@ export default {
           break
         }
       }
+      this.$refs.topControlRef1.currentIndex = index
+      this.$refs.topControlRef2.currentIndex= index
     },
     getHomeMultidata(){       //获取滚动横幅和推荐的网络请求数据
       getHomeMultidata().then(res=>{
@@ -100,8 +130,12 @@ export default {
       getHomeGoods(type,page).then(res => {
         this.goods[type].list.push(...res.data.data.list)
         this.goods[type].page += 1
+
         console.log(res);
+        this.$refs.scroll.finishPullUp();
+
       })
+
     },
   }
 }
@@ -126,15 +160,5 @@ export default {
     bottom: 49px;
     left: 0;
     right: 0;
-}
-.backtop{
-  position: fixed;
-  right: 10px;
-  bottom: 60px;
-
-  background: #ffffff;
-  border-radius: 20px;
-  width: 45px;
-  height: 40px;
 }
 </style>

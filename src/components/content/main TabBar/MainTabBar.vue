@@ -1,6 +1,5 @@
 <template>        <!--底部导航栏-->
   <div>
-    <router-view/>
     <tab-bar>
       <tab-bar-item path="/home">
         <img slot="item-icon" src="~assets/img/home.svg" alt="">
