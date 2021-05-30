@@ -1,5 +1,6 @@
 import Vue from 'vue'       //底部导航栏的路由
 import Router from 'vue-router'
+import Detail from "@/views/detail/Detail";
 Vue.use(Router)
 
 const routes=[
@@ -22,6 +23,10 @@ const routes=[
   {
     path:'/profile',
     component: () => import('@/views/profile/Profile')
+  },
+  {
+    path:'/detail/:iid',
+    component: Detail
   },
 ]
 export default new Router({

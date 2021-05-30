@@ -13,10 +13,10 @@ export default {
 <style scoped>
 
 .backtop img{
-  width: 50px;
-  height: 70px;
+  width: 40px;
+  height: 50px;
   position: absolute;
-  left: -2px;
-  bottom: -13px;
+  left: 5px;
+  bottom:2px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeGoodsList">
+  <div class="HomeGoodsList" @click="GoodsDetail">
     <img :src="GoodsList.show.img" alt="">
     <div class="GoodsTitle">
       <p>{{GoodsList.title}}</p>
@@ -12,14 +12,19 @@
 <script>
 export default {
   name: "HomeGoodsList",
-  props:{
-    GoodsList:{
-      type:Object,
-      default(){
-        return[]
+  props: {
+    GoodsList: {
+      type: Object,
+      default() {
+        return []
       }
     }
   },
+  methods: {
+    GoodsDetail() {
+      this.$router.push('/detail/' + this.GoodsList.iid)
+    }
+  }
 }
 </script>
 

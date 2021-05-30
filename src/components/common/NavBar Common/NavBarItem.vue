@@ -15,8 +15,8 @@ export default {
 <style scoped>
 .narbaritem{
   display: flex;
-  height: 44px;
   line-height: 44px;
+  height: 44px;
   text-align: center;
 }
 .left,.right{
@@ -24,10 +24,5 @@ export default {
 }
 .center{
   flex:1;
-}
-.narbaritem img{
-  width: 30px;
-  height: 30px;
-  margin: 8px;
 }
 </style>

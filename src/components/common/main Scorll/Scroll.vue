@@ -48,7 +48,10 @@ export default {
       this.Scroll.finishPullUp()
     },
     getScrollY(){
-      return this.Scroll? this.Scroll.y : 0
+     return this.Scroll.y
+    },
+    getRefresh(){
+      this.Scroll.refresh()
     }
   }
 }

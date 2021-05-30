@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <keep-alive exclude="Detail">
       <router-view/>
     </keep-alive>
     <main-tab-bar/> <!--因为MainTabBar是控制所有映射的组件所以放在APP,谨记 -->

@@ -79,10 +79,10 @@ export default {
   },
   activated() {
     this.$refs.scroll.scrollTo(0,this.saveY,0)
+    this.$refs.scroll.getRefresh()
   },
   deactivated() {
     this.saveY = this.$refs.scroll.getScrollY()
-    console.log(this.saveY);
   },
   computed:{
     showGoods(){        //通过currentType来选择展示商品
@@ -94,7 +94,8 @@ export default {
       this.$refs.scroll.scrollTo(0,0);
     },
     contentBackTop(position){       //通过位置决定是否显示返回顶部
-      this.isBackTop = (-position.y)> 1000
+      this.isBackTop = (-position.y)> 1000;
+
       this.disappearHomeBar = (-position.y) > this.$refs.topControlRef1.$el.offsetTop
     },
     loadMore(){          //获取更多商品展示
@@ -120,7 +121,7 @@ export default {
       this.$refs.topControlRef2.currentIndex= index
     },
     getHomeMultidata(){       //获取滚动横幅和推荐的网络请求数据
-      getHomeMultidata().then(res=>{
+      getHomeMultidata().then(res => {
         this.banners = res.data.data.banner.list;
         this.recommends = res.data.data.recommend.list;
       })
@@ -131,7 +132,6 @@ export default {
         this.goods[type].list.push(...res.data.data.list)
         this.goods[type].page += 1
 
-        console.log(res);
         this.$refs.scroll.finishPullUp();
 
       })
@@ -146,11 +146,29 @@ export default {
   top: 0;
   position: sticky;
   z-index: 9;
+  background: var(--color-tint);
+  color: #ffffff;
 }
 .hombar{
-  top: 44px;
-  position: sticky;
+ position: relative;
   z-index: 9;
+}
+.backtop{
+  position: fixed;
+  right: 10px;
+  bottom: 65px;
+
+  background: #ffffff;
+  width: 50px;
+  height: 40px;
+  border-radius: 10px;
+}
+.backtop::before{
+  content: '返回';
+  position: relative;
+  top:20px;
+  font-size: 13px;
+  left: 12px;
 }
 .content {
     overflow: hidden;

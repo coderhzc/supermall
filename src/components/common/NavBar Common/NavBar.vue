@@ -19,9 +19,7 @@ export default {
   right: 0;
 
   position:relative; /*像position:relative;页面滚动超出区域，就会像position:fixed，固定在目标位置*/
-  box-shadow: 0px 1px 2px #ce6a6a;
-  background-color: var(--color-tint);
-  color: #fff;
+  box-shadow: 0px 1px 2px #e0e0e0;
 }
 
 </style>
