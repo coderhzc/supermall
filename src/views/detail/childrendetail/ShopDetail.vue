@@ -61,6 +61,7 @@ export default {
 }
 .ShopLogo img{
   width: 50px;
+  height: 50px;
   border-radius: 25px;
   margin:20px 0px 0px 20px;
 }
@@ -84,7 +85,6 @@ export default {
 }
 .ShopDataDiv2{
   flex: 1;
-  width: 20px;
 }
 .ShopDataSpan1{
   display: flex;
@@ -105,7 +105,7 @@ export default {
 .ShopDataSpan3{
   display: flex;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 23px;
   padding-left: 10px;
 }
 .ShopDataSpan3 .name{
@@ -129,7 +129,8 @@ export default {
   color: #ffffff;
   background-color: #4eec54;
   border-radius: 17px;
-  width:35px;
+  width:20px;
+  margin-right: 10px;
 }
 .score-more1{
   color: #ffffff;

@@ -25,13 +25,16 @@ export default {
   },
   data(){
     return{
-      MessageDetail:['商品','参数','评论','推荐'],
+      MessageDetail:['商品','评论','图片','推荐'],
       currentIndex:0,
     }
+  },
+  created() {
   },
   methods:{
     TopBarClick(index){
       this.currentIndex = index
+      this.$emit('topbarindex',index)
     },
     DetailBack(){
       this.$router.back()

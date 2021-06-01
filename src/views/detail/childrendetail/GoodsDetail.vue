@@ -40,14 +40,14 @@ export default {
 
 .GoodsTitle{
   margin:12px auto;
-  width: 350px;
+  width: 90%;
 }
 .GoodsTitle p{
   font-size: 18px;
   text-indent: 0.4em;
 }
 .GoodsPrice{
-  width: 350px;
+  width: 90%;
   margin:20px auto;
 }
 .GoodsDetailNewPrice{

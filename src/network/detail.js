@@ -8,7 +8,7 @@ export function getDetail(iid){
     }
   })
 }
-export class Goods{
+export class Goods{  //商品信息
   constructor(itemInfo,columns,services){ //constructor 构造器
     this.title = itemInfo.title
     this.desc = itemInfo.desc
@@ -20,7 +20,7 @@ export class Goods{
     this.realPrice = itemInfo.lowNowPrice
   }
 }
-export class Shop{
+export class Shop{  //店铺参数
   constructor(shopInfo){
     this.fans = shopInfo.cFans;
     this.name = shopInfo.name;
@@ -29,6 +29,16 @@ export class Shop{
     this.score = shopInfo.score;
     this.shopLogo = shopInfo.shopLogo
     this.isBetter =shopInfo.isBetter
-
   }
+}
+export class Parameter{  //商品参数
+  constructor(itemParams){
+    this.tables = itemParams.rule.tables[0]
+    this.set = itemParams.info.set
+  }
+}
+export function getRecommend(){
+  return request({
+    url:'/recommend',
+  })
 }

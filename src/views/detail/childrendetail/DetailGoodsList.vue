@@ -1,6 +1,6 @@
 <template>
   <div class="HomeGoodsList" @click="GoodsDetail">
-    <img :src="GoodsList.show.img" alt="">
+    <img :src="GoodsList.image" alt="">
     <div class="GoodsTitle">
       <p>{{GoodsList.title}}</p>
       <span class="price">{{GoodsList.price}}</span>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "HomeGoodsList",
+  name: "DetailGoodsList",
   props: {
     GoodsList: {
       type: Object,
@@ -30,7 +30,6 @@ export default {
 
 <style scoped>
 .HomeGoodsList{
-  width: 48%;
 }
 .HomeGoodsList img{
   width: 100%;

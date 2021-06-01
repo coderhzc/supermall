@@ -29,6 +29,7 @@
 import NavBarHome from "@/views/home/childrenhome/home navbar/NavBarHome";
 import HomeBar from "@/components/content/Home Bar/HomeBar";
 import Scroll from "@/components/common/main Scorll/Scroll";
+
 //业务组件
 import RecommendHome from "@/views/home/childrenhome/home recommend/RecommendHome";
 import WeekRecommend from "@/views/home/childrenhome/home recommend/WeekRecommend";
@@ -94,7 +95,7 @@ export default {
       this.$refs.scroll.scrollTo(0,0);
     },
     contentBackTop(position){       //通过位置决定是否显示返回顶部
-      this.isBackTop = (-position.y)> 1000;
+      this.isBackTop = (-position.y) > 1000;
 
       this.disappearHomeBar = (-position.y) > this.$refs.topControlRef1.$el.offsetTop
     },
