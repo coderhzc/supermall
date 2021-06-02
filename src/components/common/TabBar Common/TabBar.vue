@@ -13,7 +13,6 @@ export default {
 <style scoped>
 .tab-bal{
   display: flex;
-
   position: fixed;
   bottom: 0;
   left: 0;
