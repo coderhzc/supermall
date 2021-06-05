@@ -1,6 +1,6 @@
 <template>        <!--底部导航栏-->
   <div>
-    <tab-bar class="tabbar-item1">
+    <tab-bar class="tab-bar-item1">
       <tab-bar-item path="/home">
         <img slot="item-icon" src="~assets/img/home.svg" alt="">
         <img slot="item-icon-active" src="~assets/img/home_active.svg" alt="">
@@ -37,7 +37,10 @@ export default {
 </script>
 
 <style scoped>
-.tabbar-item1{
-  flex: 1;
+.tab-bar-item1{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 </style>

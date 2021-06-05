@@ -15,6 +15,7 @@ export default new Vuex.Store({
         oldProduct.count += 1
       }else{
         payload.count =1
+        payload.isselect = true
         state.AddShopCar.push(payload)
       }
     }
