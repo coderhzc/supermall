@@ -28,6 +28,9 @@ export default {
       isLoad:false,
     }
   },
+  updated() {
+    console.log(this.banners);
+  }
 }
 </script>
 

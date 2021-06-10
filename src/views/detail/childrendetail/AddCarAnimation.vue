@@ -1,7 +1,7 @@
 <template>
 <div class="add-car-animation">
   <div class="add-car-animation-text">
-    <span>已收藏</span>
+    <span>已添加购物车</span>
   </div>
 </div>
 </template>
